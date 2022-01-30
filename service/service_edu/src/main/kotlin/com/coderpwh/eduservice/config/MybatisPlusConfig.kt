@@ -12,6 +12,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement
 @MapperScan("com.coderpwh.eduservice.mapper")
 class MybatisPlusConfig {
 
+    /**
+     * 配置分页创建
+     */
     @Bean
     fun mybatisPlusInterceptor():MybatisPlusInterceptor {
         var mybatisPlusInterceptor = MybatisPlusInterceptor()

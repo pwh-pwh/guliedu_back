@@ -1,7 +1,9 @@
 package com.coderpwh.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import com.coderpwh.eduservice.entity.EduTeacher;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.coderpwh.eduservice.query.TeacherQuery
 
 /**
  * <p>
@@ -11,4 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author coderpwh
  * @since 2022-01-30
  */
-interface IEduTeacherService : IService<EduTeacher>
+interface IEduTeacherService : IService<EduTeacher> {
+    fun pageQuery(pageParam: Page<EduTeacher>,teacherQuery: TeacherQuery?)
+    fun pageQuery(pageParam: Page<EduTeacher>)
+}
