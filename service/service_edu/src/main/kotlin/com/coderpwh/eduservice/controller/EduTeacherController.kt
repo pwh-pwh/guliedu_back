@@ -3,9 +3,9 @@ package com.coderpwh.eduservice.controller;
 
 import com.coderpwh.eduservice.entity.EduTeacher
 import com.coderpwh.eduservice.service.IEduTeacherService
-import org.springframework.web.bind.annotation.RequestMapping;
+import io.swagger.annotations.ApiParam
+import org.springframework.web.bind.annotation.*
 
-import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource
 
 /**
@@ -16,6 +16,7 @@ import javax.annotation.Resource
  * @author coderpwh
  * @since 2022-01-30
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/eduservice/edu-teacher")
 class EduTeacherController{
@@ -25,6 +26,13 @@ class EduTeacherController{
     @RequestMapping("/list")
     fun list(): MutableList<EduTeacher>? {
         return eduTeacherService.list()
+    }
+
+    @DeleteMapping("/delete/{id}")
+    fun delete(
+        @ApiParam(value = "讲师id", name = "id", required = true)
+        @PathVariable("id") id:String):Boolean {
+        return eduTeacherService.removeById(id)
     }
 
 }
