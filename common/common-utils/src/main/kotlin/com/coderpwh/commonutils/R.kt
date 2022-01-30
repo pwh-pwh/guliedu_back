@@ -22,6 +22,15 @@ class R :Serializable{
         data = map as HashMap<String, Any>
         return this
     }
+    fun msg(msg:String?):R {
+        this.message = msg
+        return this
+    }
+    fun code(code:Int?):R {
+        this.code = code
+        return this
+    }
+
     companion object {
         fun ok():R{
             var r = R()
