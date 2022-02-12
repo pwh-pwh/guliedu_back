@@ -5,6 +5,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 
+@CrossOrigin
 @RestController
 @RequestMapping("/eduservice/user")
 class EduLoginController {
@@ -23,8 +24,16 @@ class EduLoginController {
         log.info(token)
         val map:MutableMap<String,String> = HashMap()
         map["name"] = "coderpwh"
-        map["avatar"] = "https://img2.woyaogexing.com/2022/02/03/020b999719ee485db7ffe8150b96900d!400x400.jpeg"
+        map["avatar"] = "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif"
+        map["introduction"] = "i am  coder"
         return R.ok().data(map)
     }
+
+    @PostMapping("/logout")
+    fun logout():R {
+
+        return R.ok()
+    }
+
 
 }
