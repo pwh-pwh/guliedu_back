@@ -19,7 +19,7 @@ class OssServiceImpl :OssService{
 //        构建日期路径
         var filePath = DateTime().toString("yyyy/MM/dd")
         var originalFilename = file.originalFilename
-        var fileName = UUID.randomUUID().toString()
+        var fileName = UUID.randomUUID().toString().replace("-","")
         var fileType = originalFilename!!.substring(originalFilename.lastIndexOf("."))
         var newName = fileName+fileType
         var fileUrl:String = filePath+"/"+ newName

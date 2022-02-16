@@ -14,12 +14,11 @@ import javax.annotation.Resource
 class OssController {
     @Resource
     lateinit var ossService: OssService
-
     @ApiOperation(value = "文件上传")
     @PostMapping("upload")
     fun uploadOssFile(
         @ApiParam(name = "file", value = "文件", required = true, type = "file")
-
+        @RequestParam("file")
         file:MultipartFile
     ):R {
         var url = ossService.uploadFileAvatar(file)
