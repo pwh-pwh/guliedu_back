@@ -36,7 +36,7 @@ fun main(args: Array<String>) {
                 ) // 设置mapperXml生成路径
         }
         .strategyConfig { builder: StrategyConfig.Builder ->
-            builder.addInclude("edu_subject") // 设置需要生成的表名
+            builder.addInclude("edu_course","edu_course_description","edu_chapter","edu_video") // 设置需要生成的表名
                 .entityBuilder()
                 .idType(IdType.ASSIGN_ID)
                 .naming(NamingStrategy.underline_to_camel)
