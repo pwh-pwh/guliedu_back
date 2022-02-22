@@ -1,8 +1,6 @@
 package com.coderpwh.eduservice.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*
 import java.io.Serializable;
 import java.util.Date;
 import io.swagger.annotations.ApiModel;
@@ -21,15 +19,17 @@ import io.swagger.annotations.ApiModelProperty;
 class EduCourseDescription : Serializable {
 
     @ApiModelProperty(value = "课程ID")
-    @TableId(value = "id", type = IdType.ASSIGN_ID)
+    @TableId(value = "id", type = IdType.INPUT)
     var id: String? = null
 
     @ApiModelProperty(value = "课程简介")
     var description: String? = null
 
     @ApiModelProperty(value = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     var gmtCreate: Date? = null
 
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     @ApiModelProperty(value = "更新时间")
     var gmtModified: Date? = null
 
