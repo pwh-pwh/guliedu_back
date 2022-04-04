@@ -7,6 +7,6 @@ import java.io.Serializable
 class VideoVo : Serializable {
     var id: String? = null
     var title: String? = null
-    var free: Int? = null
+    var free: Boolean? = null
 
 }

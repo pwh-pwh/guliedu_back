@@ -1,9 +1,6 @@
 package com.coderpwh.eduservice.entity;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*
 import java.io.Serializable;
 import java.util.Date;
 import io.swagger.annotations.ApiModel;
@@ -48,7 +45,7 @@ class EduVideo : Serializable {
 
     @ApiModelProperty(value = "是否可以试听：0收费 1免费")
     @TableField("is_free")
-    var free: Int? = null
+    var free: Boolean? = null
 
     @ApiModelProperty(value = "视频时长（秒）")
     var duration: Float? = null
@@ -63,9 +60,11 @@ class EduVideo : Serializable {
     var version: Long? = null
 
     @ApiModelProperty(value = "创建时间")
+    @TableField(fill = FieldFill.INSERT)
     var gmtCreate: Date? = null
 
     @ApiModelProperty(value = "更新时间")
+    @TableField(fill = FieldFill.INSERT_UPDATE)
     var gmtModified: Date? = null
 
     override fun toString(): String {
