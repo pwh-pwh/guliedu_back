@@ -1,6 +1,7 @@
 package com.coderpwh.eduservice.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableField
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
@@ -46,7 +47,8 @@ class EduVideo : Serializable {
     var playCount: Long? = null
 
     @ApiModelProperty(value = "是否可以试听：0收费 1免费")
-    var isFree: Int? = null
+    @TableField("is_free")
+    var free: Int? = null
 
     @ApiModelProperty(value = "视频时长（秒）")
     var duration: Float? = null
@@ -76,7 +78,7 @@ class EduVideo : Serializable {
         ", videoOriginalName=" + videoOriginalName +
         ", sort=" + sort +
         ", playCount=" + playCount +
-        ", isFree=" + isFree +
+        ", isFree=" + free +
         ", duration=" + duration +
         ", status=" + status +
         ", size=" + size +

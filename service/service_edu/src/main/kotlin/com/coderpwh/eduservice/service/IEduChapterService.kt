@@ -2,6 +2,7 @@ package com.coderpwh.eduservice.service;
 
 import com.coderpwh.eduservice.entity.EduChapter;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.coderpwh.eduservice.entity.vo.ChapterVo
 
 /**
  * <p>
@@ -11,4 +12,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author coderpwh
  * @since 2022-02-22
  */
-interface IEduChapterService : IService<EduChapter>
+interface IEduChapterService : IService<EduChapter> {
+    fun nestedList(courseId:String):List<ChapterVo>
+}

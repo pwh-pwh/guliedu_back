@@ -38,6 +38,13 @@ class EduTeacherController {
         return R.ok()
     }
 
+    @GetMapping("/list")
+    fun getList():R {
+        var list = eduTeacherService.list()
+        print(list.size)
+        return R.ok().data("list",list)
+    }
+
     @PostMapping("/{current}/{limit}")
     fun pageList(
         @PathVariable("current")

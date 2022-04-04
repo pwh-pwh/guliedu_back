@@ -17,4 +17,6 @@ interface IEduCourseService : IService<EduCourse> {
      * 保存课程信息并返回id
      */
     fun saveCourseInfo(courseInfoVo: CourseInfoVo):String
+    fun getCourseDetailInfo(courseId:String):CourseInfoVo
+    fun updateCourseInfo(courseInfoVo: CourseInfoVo):Boolean
 }

@@ -2,10 +2,13 @@ package com.coderpwh.eduservice.controller;
 
 
 import com.coderpwh.commonutils.R
+import com.coderpwh.commonutils.ResultCode
 import com.coderpwh.eduservice.entity.vo.CourseInfoVo
 import com.coderpwh.eduservice.service.IEduCourseService
+import com.coderpwh.servicebase.exception.GuliException
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
+import org.springframework.util.ObjectUtils
 import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.*
 
@@ -39,4 +42,35 @@ class EduCourseController{
         }
         return R.error().msg("未知错误")
     }
+
+    @ApiOperation("修改课程信息")
+    @PostMapping("update")
+    fun updateCourseInfo(
+        @RequestBody
+        courseInfoVo: CourseInfoVo
+    ):R {
+        var flag = courseService.updateCourseInfo(courseInfoVo)
+        if (!flag) {
+            throw GuliException(ResultCode.ERROR,"更新失败")
+        }
+        return R.ok().msg("更新成功")
+    }
+
+    @ApiOperation("获取课程信息")
+    @GetMapping("courseInfo/{courseId}")
+    fun getCourseInfo(
+        @ApiParam(value = "课程id", name = "courseId", required = true)
+        @PathVariable("courseId")
+        courseId:String
+    ):R {
+        if (StringUtils.isEmpty(courseId)) {
+            return R.error().msg("参数不合法")
+        }
+        var course = courseService.getCourseDetailInfo(courseId)
+        if (ObjectUtils.isEmpty(course)) {
+            return R.error().msg("不存在该记录")
+        }
+        return R.ok().data("course",course)
+    }
+
 }

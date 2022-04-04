@@ -13,6 +13,7 @@ import org.springframework.beans.BeanUtils
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional
+import org.springframework.util.ObjectUtils
 
 /**
  * <p>
@@ -43,6 +44,30 @@ open class EduCourseServiceImpl : ServiceImpl<EduCourseMapper, EduCourse>(), IEd
             throw GuliException(ResultCode.ERROR,"保存课程描述信息失败")
         }
         return eduCourse.id!!
+    }
+
+    override fun getCourseDetailInfo(courseId: String): CourseInfoVo {
+        //查询课程信息
+        var course = getById(courseId)
+        //查询评价信息
+        var description = ecds.getById(courseId)
+        val courseInfoVo = CourseInfoVo()
+        BeanUtils.copyProperties(course,courseInfoVo)
+        BeanUtils.copyProperties(description,courseInfoVo)
+        return courseInfoVo
+    }
+
+    override fun updateCourseInfo(courseInfoVo: CourseInfoVo): Boolean {
+        var course = EduCourse()
+        BeanUtils.copyProperties(courseInfoVo,course)
+        var flag = updateById(course)
+        if (!flag) {
+            return flag
+        }
+        ecds.updateById(EduCourseDescription().apply {
+            BeanUtils.copyProperties(courseInfoVo,this)
+        })
+        return true;
     }
 
 }

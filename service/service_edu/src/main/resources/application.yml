@@ -4,8 +4,8 @@ spring:
   application:
     name: service-edu
   datasource:
-    username: root
-    password: 123456
+    username: coderpwh
+    password: 12345678
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://159.75.211.245:3306/guli?useSSL=false&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
   profiles:

@@ -40,6 +40,7 @@ class EduTeacher : Serializable {
     @ApiModelProperty(value = "排序")
     var sort: Int? = null
 
+    @TableField(fill=FieldFill.INSERT)
     @TableLogic
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     var isDeleted: Int? = null

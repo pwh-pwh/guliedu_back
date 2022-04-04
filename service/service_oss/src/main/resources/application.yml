@@ -14,6 +14,6 @@ qiniu:
 #    不区分大小写
     accessKey: r-LHwUZqdvQ-cyEe5AQxCSOujKtatktlowUtVrdJ
     secretKey: E47xoafkir2fbQ3tw0cX8d5mGeaPoB8Elr2PtNiC
-    bucket: cdpwh
+    bucket: cptest1
 
 

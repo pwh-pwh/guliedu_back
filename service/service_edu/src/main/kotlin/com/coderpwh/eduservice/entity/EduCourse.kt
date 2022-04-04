@@ -56,6 +56,8 @@ class EduCourse : Serializable {
     @ApiModelProperty(value = "课程状态 Draft未发布  Normal已发布")
     var status: String? = null
 
+    @TableField(fill=FieldFill.INSERT)
+    @TableLogic
     @ApiModelProperty(value = "逻辑删除 1（true）已删除， 0（false）未删除")
     var isDeleted: Int? = null
     @TableField(fill = FieldFill.INSERT)

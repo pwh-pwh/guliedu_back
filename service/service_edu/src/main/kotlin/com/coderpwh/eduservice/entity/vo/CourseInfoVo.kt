@@ -19,6 +19,8 @@ class CourseInfoVo:Serializable {
     @ApiModelProperty(value = "课程专业ID")
     var subjectId: String? = null
 
+    @ApiModelProperty(value = "课程专业父级ID")
+    var subjectParentId: String? = null
 
     @ApiModelProperty(value = "课程标题")
     var title: String? = null
