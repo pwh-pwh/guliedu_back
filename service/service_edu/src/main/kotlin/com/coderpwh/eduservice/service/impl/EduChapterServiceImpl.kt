@@ -5,10 +5,12 @@ import com.coderpwh.eduservice.entity.EduChapter;
 import com.coderpwh.eduservice.mapper.EduChapterMapper;
 import com.coderpwh.eduservice.service.IEduChapterService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.coderpwh.commonutils.ResultCode
 import com.coderpwh.eduservice.entity.EduVideo
 import com.coderpwh.eduservice.entity.vo.ChapterVo
 import com.coderpwh.eduservice.entity.vo.VideoVo
 import com.coderpwh.eduservice.service.IEduVideoService
+import com.coderpwh.servicebase.exception.GuliException
 import org.springframework.beans.BeanUtils
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource
@@ -50,6 +52,16 @@ open class EduChapterServiceImpl : ServiceImpl<EduChapterMapper, EduChapter>(), 
             chapterVos.add(chapterVo)
         }
         return chapterVos
+    }
+
+    override fun deleteChapter(chapterId: String):Boolean {
+        var videoVoQueryWrapper = QueryWrapper<EduVideo>()
+        videoVoQueryWrapper.eq("chapter_id",chapterId)
+        var count = videoService.count(videoVoQueryWrapper)
+        if (count>0) {
+            throw GuliException(ResultCode.ERROR,"不能删除")
+        }
+        return removeById(chapterId)
     }
 
 }

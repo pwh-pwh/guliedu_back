@@ -45,6 +45,20 @@ class EduChapterController {
         return R.ok()
     }
 
+    //根据id查询章节
+    @GetMapping("getChapter/{chapterId}")
+    fun getChapterById(
+        @PathVariable("chapterId")
+        chapterId:String
+    ):R {
+        if (!StringUtils.isEmpty(chapterId)) {
+            var chapter = chapterService.getById(chapterId)
+            return R.ok().data("chapter",chapter)
+        }else {
+            return R.error().msg("参数有误")
+        }
+    }
+
     //修改章节
     @PostMapping("updateChapter")
     fun updateChapter(
@@ -61,8 +75,10 @@ class EduChapterController {
         @PathVariable("chapterId")
         chapterId:String
     ):R {
-        chapterService.removeById(chapterId)
-        return R.ok()
+        when(chapterService.deleteChapter(chapterId)) {
+            true->return R.ok()
+            false->return R.error()
+        }
     }
 
 }
