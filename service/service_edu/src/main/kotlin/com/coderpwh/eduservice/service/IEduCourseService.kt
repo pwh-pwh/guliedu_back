@@ -3,6 +3,7 @@ package com.coderpwh.eduservice.service;
 import com.coderpwh.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.coderpwh.eduservice.entity.vo.CourseInfoVo
+import com.coderpwh.eduservice.entity.vo.CoursePublicVo
 
 /**
  * <p>
@@ -19,4 +20,6 @@ interface IEduCourseService : IService<EduCourse> {
     fun saveCourseInfo(courseInfoVo: CourseInfoVo):String
     fun getCourseDetailInfo(courseId:String):CourseInfoVo
     fun updateCourseInfo(courseInfoVo: CourseInfoVo):Boolean
+
+    fun getCoursePublic(courseId:String):CoursePublicVo
 }

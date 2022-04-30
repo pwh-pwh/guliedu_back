@@ -6,11 +6,13 @@ import com.coderpwh.commonutils.ResultCode
 import com.coderpwh.eduservice.entity.vo.CourseInfoVo
 import com.coderpwh.eduservice.service.IEduCourseService
 import com.coderpwh.servicebase.exception.GuliException
+import io.swagger.annotations.Api
 import io.swagger.annotations.ApiOperation
 import io.swagger.annotations.ApiParam
 import org.springframework.util.ObjectUtils
 import org.springframework.util.StringUtils
 import org.springframework.web.bind.annotation.*
+import java.util.Objects
 
 import javax.annotation.Resource
 
@@ -71,6 +73,20 @@ class EduCourseController{
             return R.error().msg("不存在该记录")
         }
         return R.ok().data("course",course)
+    }
+
+    @ApiOperation("根据课程id获取发布课程信息")
+    @GetMapping("coursePublicInfo/{courseId}")
+    fun getPublicCourseInfo(
+        @ApiParam(value = "课程ID", name = "courseId", required = true)
+        @PathVariable("courseId")
+        courseId: String
+    ):R {
+        var coursePublicInfo = courseService.getCoursePublic(courseId)
+        if (Objects.isNull(courseId)) {
+            return R.error().msg("不存在改记录")
+        }
+        return R.ok().data("coursePublicInfo",coursePublicInfo)
     }
 
 }

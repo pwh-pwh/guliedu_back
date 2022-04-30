@@ -2,6 +2,7 @@ package com.coderpwh.eduservice.mapper;
 
 import com.coderpwh.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.coderpwh.eduservice.entity.vo.CoursePublicVo
 
 /**
  * <p>
@@ -11,4 +12,6 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
  * @author coderpwh
  * @since 2022-02-22
  */
-interface EduCourseMapper : BaseMapper<EduCourse>
+interface EduCourseMapper : BaseMapper<EduCourse> {
+    fun getPublicCourseInfo(id:String):CoursePublicVo;
+}

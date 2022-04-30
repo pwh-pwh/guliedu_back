@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.coderpwh.commonutils.ResultCode
 import com.coderpwh.eduservice.entity.EduCourseDescription
 import com.coderpwh.eduservice.entity.vo.CourseInfoVo
+import com.coderpwh.eduservice.entity.vo.CoursePublicVo
 import com.coderpwh.eduservice.service.IEduCourseDescriptionService
 import com.coderpwh.servicebase.exception.GuliException
 import org.springframework.beans.BeanUtils
@@ -31,7 +32,6 @@ open class EduCourseServiceImpl : ServiceImpl<EduCourseMapper, EduCourse>(), IEd
     override fun saveCourseInfo(courseInfoVo: CourseInfoVo): String {
         var eduCourse = EduCourse()
         BeanUtils.copyProperties(courseInfoVo,eduCourse)
-        eduCourse.subjectParentId = eduCourse.subjectId
         var flag4Course = this.save(eduCourse)
         if (!flag4Course) {
             throw GuliException(ResultCode.ERROR,"保存课程信息失败")
@@ -68,6 +68,10 @@ open class EduCourseServiceImpl : ServiceImpl<EduCourseMapper, EduCourse>(), IEd
             BeanUtils.copyProperties(courseInfoVo,this)
         })
         return true;
+    }
+
+    override fun getCoursePublic(courseId: String): CoursePublicVo {
+        return this.baseMapper.getPublicCourseInfo(courseId)
     }
 
 }
