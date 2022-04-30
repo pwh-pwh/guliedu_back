@@ -11,6 +11,8 @@ import com.coderpwh.eduservice.entity.SubjectData
 import com.coderpwh.eduservice.entity.subject.OneSubject
 import com.coderpwh.eduservice.entity.subject.TwoSubject
 import com.coderpwh.eduservice.listener.SubjectExcelListener
+import com.coderpwh.eduservice.service.IEduChapterService
+import com.coderpwh.eduservice.service.IEduVideoService
 import org.springframework.beans.BeanUtils
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils
@@ -30,6 +32,10 @@ import javax.security.auth.Subject
 open class EduSubjectServiceImpl : ServiceImpl<EduSubjectMapper, EduSubject>(), IEduSubjectService {
     @Resource
     lateinit var subjectMapper: EduSubjectMapper
+    @Resource
+    lateinit var videoService: IEduVideoService
+    @Resource
+    lateinit var chapterService: IEduChapterService
     override fun saveSubject(file: MultipartFile) {
         EasyExcel.read(file.inputStream,SubjectData::class.java,SubjectExcelListener(this))
             .sheet()
@@ -63,6 +69,11 @@ open class EduSubjectServiceImpl : ServiceImpl<EduSubjectMapper, EduSubject>(), 
             })
         }
         return oneSubjects
+    }
+
+    override fun removeByCourseId(id: String): Boolean {
+        var queryWrapper = QueryWrapper<EduSubject>()
+        return this.baseMapper.delete(queryWrapper)>0
     }
 
 

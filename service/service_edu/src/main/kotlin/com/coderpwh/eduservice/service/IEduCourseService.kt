@@ -1,7 +1,9 @@
 package com.coderpwh.eduservice.service;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page
 import com.coderpwh.eduservice.entity.EduCourse;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.coderpwh.eduservice.entity.dto.CourseQuery
 import com.coderpwh.eduservice.entity.vo.CourseInfoVo
 import com.coderpwh.eduservice.entity.vo.CoursePublicVo
 
@@ -22,4 +24,8 @@ interface IEduCourseService : IService<EduCourse> {
     fun updateCourseInfo(courseInfoVo: CourseInfoVo):Boolean
 
     fun getCoursePublic(courseId:String):CoursePublicVo
+
+    fun pageQuery4Course(page: Page<EduCourse>,courseQuery: CourseQuery):Unit
+
+    fun removeCourse(courseId:String):Boolean
 }

@@ -64,4 +64,10 @@ open class EduChapterServiceImpl : ServiceImpl<EduChapterMapper, EduChapter>(), 
         return removeById(chapterId)
     }
 
+    override fun deleteByCourseId(courseId: String): Boolean {
+        var queryWrapper = QueryWrapper<EduChapter>()
+        queryWrapper.eq("course_id",courseId)
+        return this.baseMapper.delete(queryWrapper)>0
+    }
+
 }

@@ -11,4 +11,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @author coderpwh
  * @since 2022-02-22
  */
-interface IEduVideoService : IService<EduVideo>
+interface IEduVideoService : IService<EduVideo> {
+    fun removeByCourseId(courseId:String):Boolean
+}

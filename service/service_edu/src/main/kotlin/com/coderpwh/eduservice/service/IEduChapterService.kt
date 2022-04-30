@@ -15,4 +15,5 @@ import com.coderpwh.eduservice.entity.vo.ChapterVo
 interface IEduChapterService : IService<EduChapter> {
     fun nestedList(courseId:String):List<ChapterVo>
     fun deleteChapter(chapterId:String):Boolean
+    fun deleteByCourseId(courseId:String):Boolean
 }

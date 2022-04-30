@@ -1,5 +1,6 @@
 package com.coderpwh.eduservice.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper
 import com.coderpwh.eduservice.entity.EduVideo;
 import com.coderpwh.eduservice.mapper.EduVideoMapper;
 import com.coderpwh.eduservice.service.IEduVideoService;
@@ -16,5 +17,10 @@ import org.springframework.stereotype.Service;
  */
 @Service
 open class EduVideoServiceImpl : ServiceImpl<EduVideoMapper, EduVideo>(), IEduVideoService {
+    override fun removeByCourseId(courseId: String): Boolean {
+        var queryWrapper = QueryWrapper<EduVideo>()
+        queryWrapper.eq("course_id",courseId)
+        return baseMapper.delete(queryWrapper)>0
+    }
 
 }

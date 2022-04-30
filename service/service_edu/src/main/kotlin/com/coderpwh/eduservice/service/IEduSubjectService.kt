@@ -16,4 +16,5 @@ import org.springframework.web.multipart.MultipartFile
 interface IEduSubjectService : IService<EduSubject> {
     fun saveSubject(file:MultipartFile)
     fun subjectList():List<OneSubject>
+    fun removeByCourseId(id:String):Boolean
 }

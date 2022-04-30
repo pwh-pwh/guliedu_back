@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.coderpwh.eduservice.mapper.EduCourseMapper">
     <select id="getPublicCourseInfo" resultType="com.coderpwh.eduservice.entity.vo.CoursePublicVo">
-        select ec.id,
+        select ec.title,
                ec.price,
                ec.lesson_num,
                ec.cover,
                et.name as teacherName,
                et.avatar,
-               es1.title as subjectParentId,
-               es2.title as subjectId
+               es1.title as subjectParent,
+               es2.title as subject
         from guli.edu_course ec
                  left join guli.edu_course_description ecd
                            on ec.id = ecd.id
