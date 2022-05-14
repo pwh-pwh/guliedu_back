@@ -13,4 +13,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 interface IEduVideoService : IService<EduVideo> {
     fun removeByCourseId(courseId:String):Boolean
+    fun removeVideoById(id:String):Boolean
+    fun getSayHi(name:String):String
 }

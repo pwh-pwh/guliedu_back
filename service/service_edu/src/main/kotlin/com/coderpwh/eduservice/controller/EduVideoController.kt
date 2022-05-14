@@ -70,5 +70,13 @@ class EduVideoController {
         return R.ok().data("video",videoFormInfo)
     }
 
+    @GetMapping("hi")
+    fun testHi(
+        @RequestParam
+        name:String
+    ):R {
+        var sayHi = videoService.getSayHi(name)
+        return R.ok().msg(sayHi)
+    }
 
 }

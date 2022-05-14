@@ -16,6 +16,9 @@ spring:
   mvc:
     pathmatch:
       matching-strategy: ANT_PATH_MATCHER
+  cloud:
+    nacos:
+      server-addr: 159.75.211.245:8848
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
@@ -33,3 +36,4 @@ springfox:
         use-model-v3: true
     swagger-ui:
       enabled: true
+
